@@ -1,0 +1,9 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "semicolor": false,
+  "trailingComma": "none",
+  "htmlWhitespaceSensitivity": "ignore",
+  "printWidth": 100,
+  "endOfLine": "auto"
+}
