@@ -8,8 +8,8 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Header from '@/components/Header/Header.vue'
 import { RouterView } from 'vue-router'
+import Header from '@/components/Header/Header.vue'
 
 export default defineComponent({
   components: { Header, RouterView },
@@ -17,6 +17,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
-@import '@/assets/scss/base.scss';
-</style>
+<style lang="scss"></style>

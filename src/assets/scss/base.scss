@@ -8,6 +8,12 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.logo-width-height {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -28,4 +34,8 @@
 
 .link-light {
   color: $white-color;
+}
+
+li {
+  list-style-type: none;
 }
