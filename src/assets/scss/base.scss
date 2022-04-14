@@ -76,6 +76,56 @@
   }
 }
 
+button, .router-button {
+  margin-top: 24px;
+  padding: 12px 24px;
+  border-radius: 20px;
+  border: none;
+  color: $white-text-color;
+  background-color: $bg-primary-color;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 500ms ease all;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: rgba(48, 48, 48, 0.7);
+  }
+}
+
+.button-ghost {
+  padding: 0;
+  margin-top: 50px;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: $black-text-color;
+  background-color: transparent;
+  @media (min-width: 700px) {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  i {
+    margin-left: 8px;
+  }
+}
+
+.button-light {
+  background-color: transparent;
+  border: 2px solid $border-white-color;
+  color: $white-text-color;
+}
+
+.button-inactive {
+  pointer-events: none !important;
+  cursor: none !important;
+  background-color: rgba(128, 128, 128, 0.5) !important;
+}
+
 .icon:hover {
   .edit, .delete {
     path {

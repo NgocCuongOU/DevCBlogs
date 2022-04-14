@@ -10,6 +10,15 @@
         </div>
       </div>
     </div>
+    <div class="updates">
+      <div class="container">
+        <h2>Để không bỏ lỡ bài viết nào. Hãy đăng ký tài khoản miễn phí tại đây!</h2>
+        <router-link class="router-button" to="#">
+          Đăng ký cho DevBlogs
+          <Arrow class="arrow arrow-light" />
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -17,10 +26,11 @@ import { defineComponent } from 'vue'
 
 import BlogPost from '../components/BlogPost/BlogPost.vue'
 import BlogCard from '@/components/BlogPost/BlogCard.vue'
+import Arrow from '@/assets/Icons/arrow-right-light.svg?component'
 
 export default defineComponent({
   name: 'Home',
-  components: { BlogPost, BlogCard },
+  components: { BlogPost, BlogCard, Arrow },
   data() {
     return {
       welcomeScreen: {
@@ -75,6 +85,41 @@ export default defineComponent({
     margin-bottom: 32px;
     font-weight: 300;
     font-size: 28px;
+  }
+}
+
+.updates {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 25px;
+    @media (min-width: 800px) {
+      flex-direction: row;
+      padding: 125px 25px;
+    }
+
+    .router-button {
+      display: flex;
+      font-size: 14px;
+      text-decoration: none;
+      @media (min-width: 800px) {
+        margin-left: auto;
+      }
+    }
+
+    h2 {
+      width: 100%;
+      max-width: 605px;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 32px;
+      @media (min-width: 800px) {
+        text-align: initial;
+        font-size: 40px;
+      }
+    }
   }
 }
 </style>
