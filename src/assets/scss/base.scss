@@ -76,6 +76,14 @@
   }
 }
 
+.icon:hover {
+  .edit, .delete {
+    path {
+    fill: $white-text-color;
+    }
+  }
+}
+
 li {
   list-style-type: none;
 }

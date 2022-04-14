@@ -11,10 +11,10 @@
       </div>
       <div class="nav-links">
         <ul v-show="!isMobile">
-          <li><router-link class="link" :to="{ name: 'Home' }">Home</router-link></li>
-          <li><router-link class="link" to="#">Blogs</router-link></li>
-          <li><router-link class="link" to="#">Create Post</router-link></li>
-          <li><router-link class="link" to="#">Login/Register</router-link></li>
+          <li><router-link class="link" :to="{ name: 'Home' }">Trang Chủ</router-link></li>
+          <li><router-link class="link" to="#">Danh Sách Bài Đăng</router-link></li>
+          <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
+          <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
         </ul>
       </div>
     </nav>
@@ -25,10 +25,10 @@
     />
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <li><router-link class="link" :to="{ name: 'Home' }">Home</router-link></li>
-        <li><router-link class="link" to="#">Blogs</router-link></li>
-        <li><router-link class="link" to="#">Create Post</router-link></li>
-        <li><router-link class="link" to="#">Login/Register</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Home' }">Trang Chủ</router-link></li>
+        <li><router-link class="link" to="#">Danh Sách Bài Đăng</router-link></li>
+        <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
+        <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
       </ul>
     </transition>
   </header>

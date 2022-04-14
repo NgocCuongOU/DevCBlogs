@@ -7,11 +7,11 @@
         <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
         <p v-else class="content-preview">{{ post.blogHTML }}</p>
         <router-link v-if="post.welcomeScreen" class="link link-light" :to="{ name: 'Home' }">
-          Login/Register
+          Đăng Nhập/Đăng Ký
           <Arrow class="arrow arrow-light" />
         </router-link>
         <router-link v-else :to="{ name: 'Home' }" class="link">
-          View The Post
+          Xem Bài Viết
           <Arrow class="arrow" />
         </router-link>
       </div>
