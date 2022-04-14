@@ -1,5 +1,7 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import './variables';
+
+@import './_variables.scss';
 
 * {
   margin: 0;
@@ -8,11 +10,34 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-right: 6px;
+  }
+}
+
 .logo-width-height {
   width: 24px;
   height: 24px;
   object-fit: cover;
 }
+
+.icons-width-height {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+
+  svg, path {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 
 .app {
   display: flex;

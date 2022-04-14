@@ -11,7 +11,7 @@
       </div>
       <div class="nav-links">
         <ul v-show="!isMobile">
-          <li><router-link class="link" to="#">Home</router-link></li>
+          <li><router-link class="link" :to="{ name: 'Home' }">Home</router-link></li>
           <li><router-link class="link" to="#">Blogs</router-link></li>
           <li><router-link class="link" to="#">Create Post</router-link></li>
           <li><router-link class="link" to="#">Login/Register</router-link></li>
@@ -25,7 +25,7 @@
     />
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <li><router-link class="link" to="#">Home</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Home' }">Home</router-link></li>
         <li><router-link class="link" to="#">Blogs</router-link></li>
         <li><router-link class="link" to="#">Create Post</router-link></li>
         <li><router-link class="link" to="#">Login/Register</router-link></li>
@@ -77,7 +77,8 @@ export default defineComponent({
 })
 </script>
 <style lang="scss" scoped>
-@import '@/assets/scss/variables';
+@import '@/assets/scss/_variables.scss';
+
 header {
   position: relative;
   padding: 0 25px;
