@@ -23,20 +23,24 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useBlogStore } from '@/stores/blogsStore'
 
 import BlogPost from '../components/BlogPost/BlogPost.vue'
 import BlogCard from '@/components/BlogPost/BlogCard.vue'
 import Arrow from '@/assets/Icons/arrow-right-light.svg?component'
+import { mapState } from 'pinia'
 
 export default defineComponent({
   name: 'Home',
   components: { BlogPost, BlogCard, Arrow },
   data() {
+    const blogsStore = useBlogStore()
+
     return {
       welcomeScreen: {
         title: 'Hí Anh Em!',
         blogPost:
-          'Bài viết blog hàng tuần với tất cả các kiến thức lập trình bao gồm HTML, CSS, JavaScript và nhiều hơn nữa. Đăng ký ngay hôm nay để không bao giờ bỏ lỡ một bài viết!!!',
+          'Bài viết blog hàng tuần với tất cả các kiến thức lập trình bao gồm HTML, CSS, JavaScript và nhiều hơn nữa. Đăng ký ngay hôm nay để không bao giờ bỏ lỡ một bài viết nhé!!!',
         welcomeScreen: true,
         photo: 'coding'
       },
@@ -52,31 +56,12 @@ export default defineComponent({
           blogCoverPhoto: 'designed-for-everyone'
         }
       ],
-      sampleBlogCard: [
-        {
-          blogTitle: 'Blog Card #1',
-          author: 'Ngọc Cường',
-          createdDate: 'May 1, 2022'
-        },
-        {
-          blogTitle: 'Blog Card #2',
-          author: 'Ngọc Cường',
-          createdDate: 'May 1, 2022'
-        },
-        {
-          blogTitle: 'Blog Card #3',
-          author: 'Ngọc Cường',
-          createdDate: 'May 1, 2022'
-        },
-        {
-          blogTitle: 'Blog Card #4',
-          author: 'Ngọc Cường',
-          createdDate: 'May 1, 2022'
-        }
-      ]
+      blogsStore
     }
   },
-  mounted() {}
+  computed: {
+    ...mapState(useBlogStore, ['sampleBlogCard'])
+  }
 })
 </script>
 <style lang="scss" scoped>

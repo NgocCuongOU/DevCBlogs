@@ -126,6 +126,14 @@ button, .router-button {
   background-color: rgba(128, 128, 128, 0.5) !important;
 }
 
+.h-3 {
+  height: 16px;
+} 
+
+.w-3 {
+  width: 16px;
+}
+
 .icon:hover {
   .edit, .delete {
     path {

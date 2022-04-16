@@ -27,7 +27,7 @@
               <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
             </li>
             <li>
-              <router-link class="link" to="/">Blogs</router-link>
+              <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
             </li>
             <li>
               <router-link class="link" to="/">Create Post</router-link>

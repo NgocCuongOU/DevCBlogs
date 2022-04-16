@@ -90,7 +90,7 @@ export default defineComponent({
       p {
         font-size: 15px;
         font-weight: 300;
-        list-style: 1.7;
+        line-height: 1.7;
       }
 
       .content-preview {

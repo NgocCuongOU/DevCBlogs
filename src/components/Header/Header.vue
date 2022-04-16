@@ -12,7 +12,9 @@
       <div class="nav-links">
         <ul v-show="!isMobile">
           <li><router-link class="link" :to="{ name: 'Home' }">Trang Chủ</router-link></li>
-          <li><router-link class="link" to="#">Danh Sách Bài Đăng</router-link></li>
+          <li>
+            <router-link class="link" :to="{ name: 'Blogs' }">Danh Sách Bài Đăng</router-link>
+          </li>
           <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
           <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
         </ul>
@@ -26,7 +28,7 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <li><router-link class="link" :to="{ name: 'Home' }">Trang Chủ</router-link></li>
-        <li><router-link class="link" to="#">Danh Sách Bài Đăng</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Blogs' }">Danh Sách Bài Đăng</router-link></li>
         <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
         <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
       </ul>
@@ -121,12 +123,19 @@ header {
 
       ul {
         margin-right: 32px;
+        @media (min-width: 700px) and (max-width: 800px) {
+          margin-right: 0px;
+        }
 
         li {
           display: inline-block;
 
           &:not(:last-child) {
             margin-right: 32px;
+
+            @media (min-width: 700px) and (max-width: 800px) {
+              margin-right: -6px;
+            }
           }
         }
       }
