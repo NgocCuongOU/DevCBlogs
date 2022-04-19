@@ -7,7 +7,11 @@
       <Loading v-if="isLoading" />
     </Teleport>
     <div class="form-wrap">
-      <form action="" class="reset">
+      <form class="reset" @submit.prevent="handleReset">
+        <p class="login-register">
+          Trở lại
+          <router-link class="router-link" :to="{ name: 'Login' }">Đăng nhập.</router-link>
+        </p>
         <h2>
           Đặt lại mật khẩu
           <br />
@@ -24,7 +28,7 @@
             <Email class="icon" />
           </div>
         </div>
-        <button>Thiết Lập Mới</button>
+        <button type="submit">Thiết Lập Mới</button>
         <div class="angle"></div>
       </form>
       <div class="background"></div>
@@ -33,6 +37,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import Email from '@/assets/Icons/envelope-regular.svg?component'
 import Modal from '@/components/Modal/Modal.vue'
@@ -55,12 +61,32 @@ export default defineComponent({
       isModal.value = !isModal.value
     }
 
+    const handleReset = () => {
+      isLoading.value = true
+
+      firebase
+        .auth()
+        .sendPasswordResetEmail(email.value)
+        .then(() => {
+          isLoading.value = false
+          isModal.value = true
+          modalMessage.value =
+            'Chúng tôi đã gửi đi một tin nhắn tới email của bạn. Vui lòng đăng nhập vào email để đổi mật khẩu!'
+        })
+        .catch(() => {
+          isLoading.value = false
+          isModal.value = true
+          modalMessage.value = 'Vui lòng nhập đúng email của bạn!'
+        })
+    }
+
     return {
       email,
       modalMessage,
       isModal,
       isLoading,
-      handleCloseModal
+      handleCloseModal,
+      handleReset
     }
   }
 })

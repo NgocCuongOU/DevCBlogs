@@ -49,7 +49,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     border-radius: 8px;
-    width: 300px;
+    width: 370px;
     padding: 40px 30px;
     background-color: $bg-secondary-color;
 
