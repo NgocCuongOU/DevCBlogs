@@ -2,7 +2,7 @@
   <div class="blogs-wrapper">
     <div class="toggle-edit">
       <span>Chỉnh Sửa Bài Viết</span>
-      <input type="checkbox" name="editPost" id="editPost" />
+      <input @click="handleToggleIcons" type="checkbox" name="editPost" id="editPost" />
     </div>
     <h2 class="blogs-heading">Bài Viết Nổi Bật</h2>
     <p>
@@ -36,18 +36,20 @@
       <li><span>Others</span></li>
     </ul>
     <section class="list-blogs">
-      <BlogCardLarge />
-      <BlogCardLarge />
-      <BlogCardLarge />
-      <BlogCardLarge />
+      <BlogCardLarge :isVisibleIcons="isShow" :onToggleIcons="handleToggleIcons" />
+      <BlogCardLarge :isVisibleIcons="isShow" :onToggleIcons="handleToggleIcons" />
+      <BlogCardLarge :isVisibleIcons="isShow" :onToggleIcons="handleToggleIcons" />
+      <BlogCardLarge :isVisibleIcons="isShow" :onToggleIcons="handleToggleIcons" />
     </section>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { storeToRefs } from 'pinia'
 
 import BlogCardLarge from '@/components/BlogPost/BlogCardLarge.vue'
-import { useBlogStore } from '@/stores/blogsStore'
+import { useBlogStore } from '@/stores/useBlogs'
+import { useIconsStore } from '@/stores/useIcons'
 
 export default defineComponent({
   components: {
@@ -55,14 +57,15 @@ export default defineComponent({
   },
   setup() {
     const blogStore = useBlogStore()
+    const iconsStore = useIconsStore()
+    const { isShow } = storeToRefs(iconsStore)
 
     return {
-      blogStore
+      blogStore,
+      iconsStore,
+      isShow,
+      handleToggleIcons: iconsStore.handleToggleIcons
     }
-  },
-  computed: {
-    // eslint-disable-next-line vue/return-in-computed-property
-    handleEditPost() {}
   }
 })
 </script>
@@ -180,9 +183,11 @@ export default defineComponent({
         padding: 8px 16px;
         background-color: $bg-secondary-color;
         cursor: pointer;
-        transition: all 0.3s ease-in;
+        transition: all 0.3s ease-out;
 
         &:hover {
+          color: $white-text-color;
+          background-color: $bg-light-green-color;
           box-shadow: $box-shadow;
         }
       }

@@ -7,7 +7,7 @@
         </div>
         <p class="author__name">Ngọc Cường</p>
       </div>
-      <div class="icons">
+      <div class="icons" v-show="isVisibleIcons">
         <div class="icon">
           <Edit class="edit" />
         </div>
@@ -59,7 +59,15 @@ export default defineComponent({
     Edit,
     Delete
   },
-  setup() {}
+  props: {
+    isVisibleIcons: {
+      type: Boolean,
+      required: true
+    }
+  },
+  setup() {
+    return {}
+  }
 })
 </script>
 <style lang="scss" scoped>
@@ -172,6 +180,7 @@ export default defineComponent({
           -webkit-line-clamp: 2;
 
           &:hover {
+            color: $light-green-text-color;
             opacity: 0.8;
           }
         }

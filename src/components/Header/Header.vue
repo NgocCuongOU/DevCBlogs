@@ -5,7 +5,7 @@
         <h1>
           <router-link class="header" :to="{ name: 'Home' }">
             <img src="@/assets/logo-c.png" alt="dev c" class="logo-width-height" />
-            DevBlogs
+            Dev's Café
           </router-link>
         </h1>
       </div>
@@ -94,7 +94,7 @@ header {
     transition: 0.3s color ease;
 
     &:hover {
-      color: $light-green-color;
+      color: $light-green-text-color;
     }
   }
 

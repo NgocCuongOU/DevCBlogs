@@ -1,14 +1,14 @@
 <template>
   <div class="app-wrapper">
     <div class="app">
-      <Header />
+      <Header v-if="isShowNavFoot" />
       <RouterView />
-      <Footer />
+      <Footer v-if="isShowNavFoot" />
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { RouterView } from 'vue-router'
 
 import Header from '@/components/Header/Header.vue'
@@ -16,7 +16,36 @@ import Footer from '@/components/Footer/Footer.vue'
 
 export default defineComponent({
   components: { Header, RouterView, Footer },
-  setup() {}
+  setup() {
+    let isShowNavFoot = ref<unknown>(null)
+
+    return { isShowNavFoot }
+  },
+  created() {
+    this.checkRoutes()
+  },
+  methods: {
+    checkRoutes(): void | undefined {
+      if (
+        this.$route.name === 'Login' ||
+        this.$route.name === 'Register' ||
+        this.$route.name === 'ForgotPassword'
+      ) {
+        this.isShowNavFoot = false
+
+        return
+      }
+
+      this.isShowNavFoot = true
+
+      return
+    }
+  },
+  watch: {
+    $route() {
+      this.checkRoutes()
+    }
+  }
 })
 </script>
 

@@ -1,16 +1,12 @@
 <template>
   <div class="blog-card">
-    <div class="icons">
-      <div class="icon">
-        <Edit class="edit" />
-      </div>
-      <div class="icon">
-        <Delete class="delete" />
-      </div>
-    </div>
-    <img src="@/assets/blogCards/stock-1.jpg" alt="stock-1" />
+    <router-link class="link" to="#">
+      <img src="@/assets/blogCards/stock-1.jpg" alt="stock-1" />
+    </router-link>
     <div class="info">
-      <h4>{{ post.blogTitle }}</h4>
+      <h4>
+        <router-link class="link" to="#">{{ post.blogTitle }}</router-link>
+      </h4>
       <h6>Tác Giả: {{ post.author }}</h6>
       <h6>Ngày Đăng: {{ post.createdDate }}</h6>
       <router-link class="link" to="#">
@@ -24,15 +20,11 @@
 import { defineComponent } from 'vue'
 
 import Arrow from '@/assets/Icons/arrow-right-light.svg?component'
-import Edit from '@/assets/Icons/edit-regular.svg?component'
-import Delete from '@/assets/Icons/trash-regular.svg?component'
 
 export default defineComponent({
   name: 'blogCard',
   components: {
-    Arrow,
-    Edit,
-    Delete
+    Arrow
   },
   props: ['post'],
   setup() {}
@@ -56,40 +48,6 @@ export default defineComponent({
     box-shadow: $box-shadow;
   }
 
-  .icons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 99;
-    display: flex;
-
-    .icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 35px;
-      height: 35px;
-      object-fit: cover;
-      border-radius: 50%;
-      background-color: $bg-color;
-      transition: 0.5s all ease;
-
-      &:hover {
-        background-color: $bg-primary-color;
-      }
-
-      &:nth-child(1) {
-        margin-right: 8px;
-      }
-
-      .edit,
-      .delete {
-        height: 15px;
-        width: auto;
-        pointer-events: none;
-      }
-    }
-  }
   img {
     display: block;
     width: 100%;
@@ -111,6 +69,10 @@ export default defineComponent({
       padding-bottom: 16px;
       font-size: 20px;
       font-weight: 500;
+
+      .link {
+        padding-top: 0;
+      }
     }
 
     h6 {

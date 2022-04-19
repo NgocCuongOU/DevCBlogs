@@ -14,7 +14,7 @@
       <div class="container">
         <h2>Để không bỏ lỡ bài viết nào. Hãy đăng ký tài khoản miễn phí tại đây!</h2>
         <router-link class="router-button" to="#">
-          Đăng ký cho DevBlogs
+          Đăng ký cho Dev's Café
           <Arrow class="arrow arrow-light" />
         </router-link>
       </div>
@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useBlogStore } from '@/stores/blogsStore'
+import { useBlogStore } from '@/stores/useBlogs'
 
 import BlogPost from '../components/BlogPost/BlogPost.vue'
 import BlogCard from '@/components/BlogPost/BlogCard.vue'

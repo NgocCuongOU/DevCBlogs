@@ -89,7 +89,16 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['Home', 'Header', 'Footer', 'Blogs']
+        ignores: [
+          'Home',
+          'Header',
+          'Footer',
+          'Blogs',
+          'ForgotPassword',
+          'Login',
+          'Register',
+          'Modal'
+        ]
       }
     ],
     '@typescript-eslint/no-empty-function': 'off',
