@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, defineEmits } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Modal',
@@ -18,9 +18,9 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
+  setup(props, { emit }) {
     function closeModal() {
-      defineEmits(['onCloseModal'])
+      emit('onCloseModal')
     }
 
     return {
@@ -31,6 +31,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/variables';
+
 .modal {
   display: flex;
   justify-content: center;

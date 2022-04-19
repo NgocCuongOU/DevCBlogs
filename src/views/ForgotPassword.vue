@@ -1,5 +1,11 @@
 <template>
   <div class="reset-password">
+    <Teleport to="body">
+      <Modal :modal-message="modalMessage" v-if="isModal" @onCloseModal="handleCloseModal" />
+    </Teleport>
+    <Teleport to="body">
+      <Loading v-if="isLoading" />
+    </Teleport>
     <div class="form-wrap">
       <form action="" class="reset">
         <h2>
@@ -29,17 +35,32 @@
 import { defineComponent, ref } from 'vue'
 
 import Email from '@/assets/Icons/envelope-regular.svg?component'
+import Modal from '@/components/Modal/Modal.vue'
+import Loading from '@/components/Reuseable/Loading.vue'
 
 export default defineComponent({
   name: 'ForgotPassword',
   components: {
-    Email
+    Email,
+    Modal,
+    Loading
   },
   setup() {
     const email = ref<string>('')
+    const modalMessage = ref<string>('Hello world')
+    const isModal = ref<boolean>(false)
+    const isLoading = ref<boolean>(false)
+
+    const handleCloseModal = () => {
+      isModal.value = !isModal.value
+    }
 
     return {
-      email
+      email,
+      modalMessage,
+      isModal,
+      isLoading,
+      handleCloseModal
     }
   }
 })
