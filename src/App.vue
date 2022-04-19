@@ -10,6 +10,8 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { RouterView } from 'vue-router'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import Header from '@/components/Header/Header.vue'
 import Footer from '@/components/Footer/Footer.vue'
@@ -23,6 +25,7 @@ export default defineComponent({
   },
   created() {
     this.checkRoutes()
+    console.log(firebase.auth().currentUser)
   },
   methods: {
     checkRoutes(): void | undefined {
@@ -77,5 +80,10 @@ export default defineComponent({
       grid-template-columns: repeat(4, 1fr);
     }
   }
+}
+
+.error {
+  text-align: center;
+  color: #cc0000;
 }
 </style>

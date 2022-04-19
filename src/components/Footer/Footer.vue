@@ -33,7 +33,7 @@
               <router-link class="link" to="/">Create Post</router-link>
             </li>
             <li>
-              <router-link class="link" to="/">Login In / Register</router-link>
+              <router-link class="link" :to="{ name: 'Login' }">Login In / Register</router-link>
             </li>
           </ul>
         </div>

@@ -24,15 +24,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useBlogStore } from '@/stores/useBlogs'
+import { mapState } from 'pinia'
 
 import BlogPost from '../components/BlogPost/BlogPost.vue'
 import BlogCard from '@/components/BlogPost/BlogCard.vue'
 import Arrow from '@/assets/Icons/arrow-right-light.svg?component'
-import { mapState } from 'pinia'
 
 export default defineComponent({
   name: 'Home',
   components: { BlogPost, BlogCard, Arrow },
+  created() {},
   data() {
     const blogsStore = useBlogStore()
 

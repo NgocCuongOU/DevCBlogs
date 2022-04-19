@@ -16,7 +16,7 @@
             <router-link class="link" :to="{ name: 'Blogs' }">Danh Sách Bài Đăng</router-link>
           </li>
           <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
-          <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
+          <li><router-link class="link" :to="{ name: 'Login' }">Đăng Nhập/Đăng Ký</router-link></li>
         </ul>
       </div>
     </nav>
@@ -30,7 +30,7 @@
         <li><router-link class="link" :to="{ name: 'Home' }">Trang Chủ</router-link></li>
         <li><router-link class="link" :to="{ name: 'Blogs' }">Danh Sách Bài Đăng</router-link></li>
         <li><router-link class="link" to="#">Tạo Bài Viết</router-link></li>
-        <li><router-link class="link" to="#">Đăng Nhập/Đăng Ký</router-link></li>
+        <li><router-link class="link" :to="{ name: 'Login' }">Đăng Nhập/Đăng Ký</router-link></li>
       </ul>
     </transition>
   </header>

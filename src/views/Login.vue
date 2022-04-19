@@ -1,6 +1,6 @@
 <template>
   <div class="form-wrap">
-    <form action="" class="login">
+    <form action="" class="login" @submit.prevent="handleSignIn">
       <p class="login-register">
         Bạn chưa có tài khoản?
         <router-link class="router-link" :to="{ name: 'Register' }">Đăng ký</router-link>
@@ -17,17 +17,21 @@
           <Password class="icon" />
         </div>
       </div>
+      <div class="error" v-show="error.isError">{{ error.errorMessage }}</div>
       <router-link class="forgot-password" :to="{ name: 'ForgotPassword' }">
         Bạn quên mật khẩu?
       </router-link>
-      <button>Đăng Nhập</button>
+      <button type="submit">Đăng Nhập</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 import Email from '@/assets/Icons/envelope-regular.svg?component'
 import Password from '@/assets/Icons/lock-alt-solid.svg?component'
@@ -41,10 +45,34 @@ export default defineComponent({
   setup() {
     const email = ref<string>('')
     const password = ref<string>('')
+    const error = reactive({
+      isError: false,
+      errorMessage: ''
+    })
+
+    const router = useRouter()
+
+    const handleSignIn = () => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email.value, password.value)
+        .then(() => {
+          error.errorMessage = ''
+          error.isError = false
+
+          router.push({ name: 'Home' })
+        })
+        .catch(() => {
+          error.isError = true
+          error.errorMessage = 'Thông tin đăng nhập không chính xác. Xin vui lòng nhập lại!'
+        })
+    }
 
     return {
       email,
-      password
+      password,
+      error,
+      handleSignIn
     }
   }
 })
