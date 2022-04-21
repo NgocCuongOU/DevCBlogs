@@ -10,6 +10,10 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+body {
+  position: relative;
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -64,7 +68,7 @@
 .arrow {
   margin-left: 8px;
   width: 12px;
-  
+
   path {
     fill: $black-color;
   }
@@ -128,7 +132,7 @@ button, .router-button {
 
 .h-3 {
   height: 16px;
-} 
+}
 
 .w-3 {
   width: 16px;

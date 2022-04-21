@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-wrapper no-user">
+  <div class="blog-wrapper" :class="{ 'no-user': !getUser }">
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
@@ -25,7 +25,9 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
+import { mapState } from 'pinia'
 
+import { useProfileStore } from '@/stores/useProfile'
 import type BlogPost from '@/interfaces/BlogPost'
 import Arrow from '@/assets/Icons/arrow-right-light.svg?component'
 
@@ -39,6 +41,9 @@ export default defineComponent({
       type: Object as PropType<BlogPost>,
       required: true
     }
+  },
+  computed: {
+    ...mapState(useProfileStore, ['getUser'])
   }
 })
 </script>

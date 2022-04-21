@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <BlogPost :post="welcomeScreen" />
+    <BlogPost v-if="!getUser" :post="welcomeScreen" />
     <BlogPost :post="post" v-for="(post, index) in sampleBlogPost" :key="index" />
     <div class="blog-card-wrap">
       <div class="container">
@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="updates">
+    <div v-if="!getUser" class="updates">
       <div class="container">
         <h2>Để không bỏ lỡ bài viết nào. Hãy đăng ký tài khoản miễn phí tại đây!</h2>
         <router-link class="router-button" to="#">
@@ -24,6 +24,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useBlogStore } from '@/stores/useBlogs'
+import { useProfileStore } from '@/stores/useProfile'
 import { mapState } from 'pinia'
 
 import BlogPost from '../components/BlogPost/BlogPost.vue'
@@ -61,7 +62,8 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState(useBlogStore, ['sampleBlogCard'])
+    ...mapState(useBlogStore, ['sampleBlogCard']),
+    ...mapState(useProfileStore, ['getUser'])
   }
 })
 </script>

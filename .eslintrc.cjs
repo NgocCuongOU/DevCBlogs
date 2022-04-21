@@ -98,7 +98,9 @@ module.exports = {
           'Login',
           'Register',
           'Modal',
-          'Loading'
+          'Loading',
+          'Profile',
+          'Admin'
         ]
       }
     ],

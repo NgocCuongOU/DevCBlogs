@@ -1,6 +1,6 @@
 <template>
   <div class="form-wrap">
-    <form action="" class="login" @submit.prevent="handleSignIn">
+    <form class="login">
       <p class="login-register">
         Bạn chưa có tài khoản?
         <router-link class="router-link" :to="{ name: 'Register' }">Đăng ký</router-link>
@@ -21,7 +21,7 @@
       <router-link class="forgot-password" :to="{ name: 'ForgotPassword' }">
         Bạn quên mật khẩu?
       </router-link>
-      <button type="submit">Đăng Nhập</button>
+      <button @click.prevent="handleSignIn">Đăng Nhập</button>
       <div class="angle"></div>
     </form>
     <div class="background"></div>
@@ -57,10 +57,10 @@ export default defineComponent({
         .auth()
         .signInWithEmailAndPassword(email.value, password.value)
         .then(() => {
+          router.push({ name: 'Home' })
+
           error.errorMessage = ''
           error.isError = false
-
-          router.push({ name: 'Home' })
         })
         .catch(() => {
           error.isError = true

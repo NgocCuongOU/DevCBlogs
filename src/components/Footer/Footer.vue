@@ -32,7 +32,7 @@
             <li>
               <router-link class="link" to="/">Create Post</router-link>
             </li>
-            <li>
+            <li v-if="!getUser">
               <router-link class="link" :to="{ name: 'Login' }">Login In / Register</router-link>
             </li>
           </ul>
@@ -46,6 +46,9 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { mapState } from 'pinia'
+import { useProfileStore } from '@/stores/useProfile'
+
 import YouTube from '@/assets/Icons/youtube-brands.svg?component'
 import Twitter from '@/assets/Icons/twitter-brands.svg?component'
 import Linkedin from '@/assets/Icons/linkedin-brands.svg?component'
@@ -57,6 +60,9 @@ export default defineComponent({
     Twitter,
     Linkedin,
     Instagram
+  },
+  computed: {
+    ...mapState(useProfileStore, ['getUser'])
   }
 })
 </script>

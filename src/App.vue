@@ -9,10 +9,12 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import { mapActions } from 'pinia'
 import { RouterView } from 'vue-router'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
+import { useProfileStore } from '@/stores/useProfile'
 import Header from '@/components/Header/Header.vue'
 import Footer from '@/components/Footer/Footer.vue'
 
@@ -20,12 +22,25 @@ export default defineComponent({
   components: { Header, RouterView, Footer },
   setup() {
     let isShowNavFoot = ref<unknown>(null)
+    const profileStore = useProfileStore()
 
-    return { isShowNavFoot }
+    return {
+      isShowNavFoot,
+      profileStore,
+      updateUser: profileStore.updateUser,
+      getCurrentUser: profileStore.getCurrentUser
+    }
   },
   created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.updateUser(user)
+
+      if (user) {
+        this.getCurrentUser()
+      }
+    })
+
     this.checkRoutes()
-    console.log(firebase.auth().currentUser)
   },
   methods: {
     checkRoutes(): void | undefined {
@@ -43,6 +58,9 @@ export default defineComponent({
 
       return
     }
+  },
+  computed: {
+    ...mapActions(useProfileStore, ['getCurrentUser', 'updateUser'])
   },
   watch: {
     $route() {
